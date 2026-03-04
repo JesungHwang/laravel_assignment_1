@@ -8,17 +8,17 @@ View::share("sharedvalue", "MY SHARED VALUE!!!");
 
 Route::post("/assignment_1/insert", function(Request $request) {
 
-    Illuminate\Support\Facades\DB::update("INSERT INTO assignment_1 VALUES (?, ?, ?, ?)", 
-               [$request->input("prodName"),
-                $request->input("prodDesc"),
-                $request->input("prodCode"),
-                $request->input("prodCost")]);
- 
-    $assignment_1_db = DB::select("SELECT * FROM assignment_1");
-
-    return view("assignment_1", 
-                ["assignment_1" => $assignment_1_db]);
-
+    DB::insert(
+        "INSERT INTO assignment_1 (prodName, prodDesc, prodCode, prodCost)
+         VALUES (?, ?, ?, ?)",
+        [
+            $request->prodName,
+            $request->prodDesc,
+            $request->prodCode,
+            $request->prodCost
+        ]
+    );
+    return redirect("/assignment_1");
 });
 
 Route::get("/assignment_1/update", function() {
@@ -49,7 +49,8 @@ Route::get("/assignment_1", function() {
     $assignment_1_db = DB::select("SELECT * FROM assignment_1");
 
     return view("assignment_1", 
-                ["assignment_1" => $assignment_1_db]);
+                ["assignment_1" => $assignment_1_db,
+                 "page" => "Products"]);
 
 });
 

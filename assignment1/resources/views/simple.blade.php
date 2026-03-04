@@ -21,41 +21,23 @@
 <body>
 
     <h1>Blade Template Demo</h1>
-
-
-        <ul>
-            <li>Carrots</li>
-            <li>Cucumber</li>
-            <li>Tomato</li>
-        </ul>
-
-    {{-- Our app is a security disaster, I hope the client doesn't see this! 
-    --}}
-
-    <h2>Fruits</h2>
-    <ul>
-        @forelse($fruits as $fruit)
-            <li>{{ $fruit }}</li>
-        @empty 
-            <p><em>No fruits found...</em></p>
-        @endforelse
-    </ul>
-
-    <h2>Employees</h2>
+    <h2>Products</h2>
     <table>
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Salary</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Code</th>
+                <th>Cost</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($product as $products)
+            @foreach($assignment_1 as $product)
                 <tr>
-                    <td>{{ $product["firstName"] }}</td>
-                    <td>{{ $product["lastName"] }}</td>
-                    <td>{{ $empproductloyee["salary"] }}</td>
+                    <td>{{ $product["prodName"] }}</td>
+                    <td>{{ $product["prodDesc"] }}</td>
+                    <td>{{ $product["prodCode"] }}</td>
+                    <td>{{ $product["prodCost"] }}</td>
                 </tr>
             @endforeach
         </tbody>
@@ -63,21 +45,23 @@
 
     <br /> <br />
 
-    <h2>Employees</h2>
+    <h2>Products</h2>
     <table>
         <thead>
             <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Salary</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Code</th>
+                <th>Cost</th>
             </tr>
         </thead>
         <tbody>
-            @for($i = 0; $i < count($employees); $i++)
+            @for($i = 0; $i < count($assignment_1); $i++)
                 <tr>
-                    <td>{{ $employees[$i]["firstName"] }}</td>
-                    <td>{{ $employees[$i]["lastName"] }}</td>
-                    <td>{{ $employees[$i]["salary"] }}</td>
+                    <td>{{ $assignment_1[$i]["prodName"] }}</td>
+                    <td>{{ $assignment_1[$i]["prodDesc"] }}</td>
+                    <td>{{ $assignment_1[$i]["prodCode"] }}</td>
+                    <td>{{ $assignment_1[$i]["prodCost"] }}</td>
                 </tr>
             @endfor
         </tbody>

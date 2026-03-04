@@ -52,7 +52,7 @@
     <br /> <br />
 
     <h2>Create New Product</h2>
-    <form action="{{ route('assignment_1.insert') }}" method="POST">
+    <form action="{{ url('/assignment_1/insert') }}" method="POST">
     @csrf
         <label>Product Name:</label>
         <input type="text" name="prodName">
@@ -71,3 +71,5 @@
     
 </body>
 </html>
+
+@endsection
