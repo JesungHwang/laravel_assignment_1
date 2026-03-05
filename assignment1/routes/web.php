@@ -5,47 +5,57 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\userController;
 
-Route::post("/manage/insert", function(Request $request) {
+Route::post("/manage/insert", [userController::class, "insert"]);
 
-    DB::insert(
-        "INSERT INTO assignment_1 (prodName, prodDesc, prodCode, prodCost)
-         VALUES (?, ?, ?, ?)",
-        [
-            $request->prodName,
-            $request->prodDesc,
-            $request->prodCode,
-            $request->prodCost
-        ]
-    );
-    return redirect("/manage");
-});
-Route::get("/manage/edit/{id}", function($id) {
-    $product = DB::select("SELECT * FROM assignment_1 WHERE id = ?", [$id]);
-    return view("edit", [
-        "product" => $product[0],
-        "page" => "Edit Product"
-    ]);
-});
-Route::post("/manage/update/{id}", function(Request $request, $id) {
-    DB::update(
-        "UPDATE assignment_1 
-        SET prodName=?, prodDesc=?, prodCode=?, prodCost=? 
-        WHERE id=?",
-        [
-            $request->prodName,
-            $request->prodDesc,
-            $request->prodCode,
-            $request->prodCost,
-            $id
-        ]
-    );
-    return redirect("/manage");
-});
+// Route::post("/manage/insert", function(Request $request) {
 
-Route::get("/manage/delete/{id}", function($id) {
-    DB::delete("DELETE FROM assignment_1 WHERE id=?", [$id]);
-    return redirect("/manage");
-});
+//     DB::insert(
+//         "INSERT INTO assignment_1 (prodName, prodDesc, prodCode, prodCost)
+//          VALUES (?, ?, ?, ?)",
+//         [
+//             $request->prodName,
+//             $request->prodDesc,
+//             $request->prodCode,
+//             $request->prodCost
+//         ]
+//     );
+//     return redirect("/manage");
+// });
+
+Route::get("/manage/edit/{id}", [userController::class, "edit"]);
+
+// Route::get("/manage/edit/{id}", function($id) {
+//     $product = DB::select("SELECT * FROM assignment_1 WHERE id = ?", [$id]);
+//     return view("edit", [
+//         "product" => $product[0],
+//         "page" => "Edit Product"
+//     ]);
+// });
+
+Route::post("/manage/update/{id}", [userController::class, "update"]);
+
+// Route::post("/manage/update/{id}", function(Request $request, $id) {
+//     DB::update(
+//         "UPDATE assignment_1 
+//         SET prodName=?, prodDesc=?, prodCode=?, prodCost=? 
+//         WHERE id=?",
+//         [
+//             $request->prodName,
+//             $request->prodDesc,
+//             $request->prodCode,
+//             $request->prodCost,
+//             $id
+//         ]
+//     );
+//     return redirect("/manage");
+// });
+
+Route::get("/manage/delete/{id}", [userController::class, "delete"]);
+
+// Route::get("/manage/delete/{id}", function($id) {
+//     DB::delete("DELETE FROM assignment_1 WHERE id=?", [$id]);
+//     return redirect("/manage");
+// });
 
 Route::get("/manage", [userController::class, "manage"]);
 // Route::get("/manage", function() {

@@ -3,6 +3,7 @@
         .nav-item {
         color: black;
         padding: 10px 15px;
+        margin: 5px;
         border-radius: 6px;
         text-decoration: none;
         transition: color 0.2s ease, background-color 0.2s ease;

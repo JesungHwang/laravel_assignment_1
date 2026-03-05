@@ -14,7 +14,7 @@
 <div id="container">
     <div id="containerChild">
         <h2>About</h2>
-        <p>This laravel app is utilised for users to be able to manage products by modifying, inserting and deleting entries.</p>
+        <p>This laravel app is utilised for users to be able to manage products by inserting, modifying and deleting entries.</p>
         <p>The project is a CRUD web app using Blade views with a create and controller classes.</p>
     </div>
     <div id="containerChild">
