@@ -9,3 +9,4 @@
     <header>
         <h1>Assignment 3 - Laravel Multipages</h1>
     </header>
+</body>

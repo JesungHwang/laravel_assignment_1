@@ -15,21 +15,29 @@
         }
 
         table, td, th {
-            border: 1px solid black;
+            border: 1px solid white;
         }
 
         table {
             border-collapse: collapse;
         }
+        .edit{
+            text-decoration: none;
+            color: lightblue;
+        }
+        .delete{
+            text-decoration: none;
+            color: red;
+        }
         .button{
             display:inline-block;
             padding:6px 6px;
             margin-bottom: 15px;
-            background:black;
-            color:white;
+            background:white;
+            color:black;
             text-decoration:none;
             border-radius:6px;
-            box-shadow:0 5px 0 lightgrey;
+            box-shadow:0 5px 0 grey;
             transition:all 0.1s ease-in-out;
         }
     </style>
@@ -57,10 +65,10 @@
                     <td>{{ $product->prodCode }}</td>
                     <td>{{ $product->prodCost }}</td>
                     <td>
-                        <a href="/manage/edit/{{ $product->id }}">Edit</a>
+                        <a class="edit" href="/manage/edit/{{ $product->id }}">Edit</a>
                     </td>
                     <td>
-                        <a href="/manage/delete/{{ $product->id }}">Delete</a>
+                        <a class="delete" href="/manage/delete/{{ $product->id }}">Delete</a>
                     </td>
                 </tr>
             @endforeach
