@@ -49,21 +49,12 @@ Route::get("/manage", function() {
     $assignment_1_db = DB::select("SELECT * FROM assignment_1");
 
     return view("manage", 
-                ["assignment_1" => $assignment_1_db,
-                 "page" => "Products"]);
+                ["assignment_1" => $assignment_1_db, "page" => "Products"]);
 
 });
 
-Route::get("/home2", function() { 
-    return view("home2");
-});
-
-Route::get("/about2", function() { 
-    return view("about2");
-});
-
-Route::get("/contact2", function() { 
-    return view("contact2");
+Route::get("/search", function() { 
+    return view("search");
 });
 
 
