@@ -46,6 +46,8 @@
 <hr>
 
 <script>
+//this is just a one off script that makes it so that it breaks the letters down in nav-item instead of having
+//to make then in an individual span or div for the wave effect
 document.querySelectorAll(".nav-item strong").forEach(el=>{
     const text = el.textContent;
     el.innerHTML = [...text].map((l,i)=>

@@ -13,7 +13,7 @@ class userController extends Controller
             "page" => "Products"
         ]);
     }
-    
+
     public function insert(Request $request)
     {
         DB::insert(
@@ -60,5 +60,36 @@ class userController extends Controller
     {
         DB::delete("DELETE FROM assignment_1 WHERE id=?", [$id]);
         return redirect("/manage");
+    }
+
+    public function search(Request $request)
+    {
+        $results = [];
+        if($request->has('search')){
+            $term=$request->search;
+            $low=$request->low;
+            $high=$request->high;
+
+            $results=DB::select(
+                "SELECT * FROM assignment_1
+                 WHERE prodCost >= ?
+                 AND prodCost <= ?
+                 AND( prodName LIKE ?
+                      OR prodDesc LIKE ?
+                      OR prodCode LIKE ?
+                    )",
+            [
+                $low,
+                $high,
+                "%$term",
+                "%$term%",
+                "%$term%"
+            ]
+            );
+        }
+        return view("search",[
+                    "results"=>$results,
+                    "page"=>"Search"
+        ]);
     }
 }

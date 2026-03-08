@@ -66,13 +66,15 @@ Route::get("/manage", [userController::class, "manage"]);
 
 // });
 
+Route::get("/search",[userController::class, "search"]);
+
 Route::get("/home", function() { 
     return view("home")->with("page", "Home");
 });
 
-Route::get("/search", function() { 
-    return view("search")->with("page","Search");
-});
+// Route::get("/search", function() { 
+//     return view("search")->with("page","Search");
+// });
 
 Route::get("/about", function() { 
     return view("about")->with("page", "About");
